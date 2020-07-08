@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+// CSS
+import "./App.css"
+// components
+import Post from "./components/Post"
 
 function App() {
+  const userName = "yasunari"
+  const imageUrl = "https://i.ytimg.com/vi/8dkGmPprlWM/maxresdefault.jpg"
+  const caption = "caption..."
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="app__header">
+        <img
+          className="app__headerImage"
+          src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
+          alt=""
+        />
+      </div>
+      {/* Post List */}
+      <Post userName={userName} imageUrl={imageUrl} caption={caption} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
