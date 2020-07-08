@@ -1,13 +1,18 @@
-import React from "react"
+import React, { useState } from "react"
 // CSS
 import "./App.css"
 // components
 import Post from "./components/Post"
 
 function App() {
-  const userName = "yasunari"
-  const imageUrl = "https://i.ytimg.com/vi/8dkGmPprlWM/maxresdefault.jpg"
-  const caption = "caption..."
+  const [posts, setPosts] = useState([
+    {
+      userName: "yasunari",
+      imageUrl: "https://i.ytimg.com/vi/8dkGmPprlWM/maxresdefault.jpg",
+      caption: "caption...",
+    },
+  ])
+
   return (
     <div className="app">
       <div className="app__header">
@@ -18,7 +23,13 @@ function App() {
         />
       </div>
       {/* Post List */}
-      <Post userName={userName} imageUrl={imageUrl} caption={caption} />
+      {posts.map((post) => (
+        <Post
+          userName={post.userName}
+          imageUrl={post.imageUrl}
+          caption={post.caption}
+        />
+      ))}
     </div>
   )
 }
