@@ -1,5 +1,5 @@
-# React × firebase🔥
+# React × firebase 🔥
 
-## Useing
+## Useing 🧰
 
-React hooks,
+React ( hooks ), Material UI, firebase
