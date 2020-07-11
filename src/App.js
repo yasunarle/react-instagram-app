@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Modal, makeStyles, Button, Input } from "@material-ui/core"
+import InstagramEmbed from "react-instagram-embed"
 // CSS
 import "./App.css"
 // components
@@ -182,22 +183,39 @@ function App() {
       </div>
 
       <div className="app__posts">
-        {posts.map((post) => (
-          <Post
-            key={post.id}
-            userName={post.userName}
-            imageUrl={post.imageUrl}
-            caption={post.caption}
+        <div className="app__posts-left">
+          {posts.map((post) => (
+            <Post
+              key={post.id}
+              postId={post.id}
+              userName={post.userName}
+              imageUrl={post.imageUrl}
+              caption={post.caption}
+            />
+          ))}
+        </div>
+        <div className="app__posts-right">
+          <InstagramEmbed
+            url="https://instagr.am/p/Zw9o4/"
+            maxWidth={320}
+            hideCaption={false}
+            containerTagName="div"
+            protocol=""
+            injectScript
+            onLoading={() => {}}
+            onSuccess={() => {}}
+            onAfterRender={() => {}}
+            onFailure={() => {}}
           />
-        ))}
+        </div>
       </div>
-      <div>
-        {user?.displayName ? (
-          <ImageUpLoad userName={user.displayName} />
-        ) : (
-          <h3>Sorry you need to login to upload</h3>
-        )}
-      </div>
+
+      {/* Image up loader */}
+      {user?.displayName ? (
+        <ImageUpLoad userName={user.displayName} />
+      ) : (
+        <h3>Sorry you need to login to upload</h3>
+      )}
     </div>
   )
 }

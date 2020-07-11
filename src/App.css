@@ -28,4 +28,11 @@
 }
 .app__posts {
   padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+.app__posts-left {
+}
+.app__posts-right {
+  margin-left: 20px;
 }
