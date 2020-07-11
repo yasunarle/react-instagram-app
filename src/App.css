@@ -7,6 +7,9 @@
   background-color: #fafafa;
 }
 .app__header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   object-fit: contain;
   padding: 20px;
   background-color: white;
