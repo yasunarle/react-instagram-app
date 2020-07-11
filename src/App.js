@@ -4,6 +4,7 @@ import { Modal, makeStyles, Button, Input } from "@material-ui/core"
 import "./App.css"
 // components
 import Post from "./components/Post"
+import ImageUpLoad from "./components/ImageUpLoad"
 // Plugins
 import { db, auth } from "./plugins/firebase"
 
@@ -86,14 +87,16 @@ function App() {
   // Posts listener
   useEffect(() => {
     // this is run when this page created...
-    db.collection("posts").onSnapshot((snapshot) => {
-      setPosts(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }))
-      )
-    })
+    db.collection("posts")
+      .orderBy("timeStamp", "desc")
+      .onSnapshot((snapshot) => {
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+        )
+      })
   }, [])
 
   return (
@@ -187,6 +190,11 @@ function App() {
           caption={post.caption}
         />
       ))}
+      {user?.displayName ? (
+        <ImageUpLoad userName={user.displayName} />
+      ) : (
+        <h3>Sorry you need to login to upload</h3>
+      )}
     </div>
   )
 }
